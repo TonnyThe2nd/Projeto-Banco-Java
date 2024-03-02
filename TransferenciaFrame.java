@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 public class TransferenciaFrame extends javax.swing.JFrame {
     private javax.swing.JTextField agenciaTF;
-    private javax.swing.JButton cancelarBTTN;
+    private javax.swing.JButton sairBTTN;
     private javax.swing.JTextField destTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -21,22 +21,24 @@ public class TransferenciaFrame extends javax.swing.JFrame {
     ClasseComandosUserDois cddois = new ClasseComandosUserDois();
     
     String user;
-
-    public TransferenciaFrame(String user) {
+    double main_saldoUm;
+    double main_saldoDois;
+    public TransferenciaFrame(String user, double valorUm, double valorDois) {
         initComponents();
-        this.user = user;
-        
+        this.user = user;  
+        this.main_saldoUm = valorUm;
+        this.main_saldoDois = valorDois;
     }
 
     private TransferenciaFrame() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); 
     };                       
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         valTF = new javax.swing.JTextField();
         transferirBTTN = new javax.swing.JButton();
-        cancelarBTTN = new javax.swing.JButton();
+        sairBTTN = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         destTF = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -51,11 +53,7 @@ public class TransferenciaFrame extends javax.swing.JFrame {
 
         valTF.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
         valTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        valTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                valTFActionPerformed(evt);
-            }
-        });
+
 
         transferirBTTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
         transferirBTTN.setText("TRANSFERIR");
@@ -65,30 +63,20 @@ public class TransferenciaFrame extends javax.swing.JFrame {
             }
         });
 
-        cancelarBTTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
-        cancelarBTTN.setText("CANCELAR");
-        cancelarBTTN.addActionListener(new java.awt.event.ActionListener() {
+        sairBTTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
+        sairBTTN.setText("SAIR");
+        sairBTTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelarBTTNActionPerformed(evt);
+                sairBTTNActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18));
         jLabel2.setText("DESTINATÁRIO(NOME):");
 
-        destTF.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        destTF.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
         destTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         destTF.setOpaque(true);
-        destTF.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                destTFFocusLost(evt);
-            }
-        });
-        destTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                destTFActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
         jLabel3.setText("NÚMERO:");
@@ -98,16 +86,7 @@ public class TransferenciaFrame extends javax.swing.JFrame {
         agenciaTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         agenciaTF.setDisabledTextColor(new java.awt.Color(187, 187, 187));
         agenciaTF.setOpaque(true);
-        agenciaTF.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                agenciaTFFocusLost(evt);
-            }
-        });
-        agenciaTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agenciaTFActionPerformed(evt);
-            }
-        });
+
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
         jLabel4.setText("AGÊNCIA:");
@@ -117,16 +96,6 @@ public class TransferenciaFrame extends javax.swing.JFrame {
         numTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         numTF.setDisabledTextColor(new java.awt.Color(187, 187, 187));
         numTF.setOpaque(true);
-        numTF.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                numTFFocusLost(evt);
-            }
-        });
-        numTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numTFActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,7 +108,7 @@ public class TransferenciaFrame extends javax.swing.JFrame {
                             .addGap(129, 129, 129)
                             .addComponent(transferirBTTN, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cancelarBTTN, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(sairBTTN, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(jLabel1)
@@ -184,21 +153,18 @@ public class TransferenciaFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(transferirBTTN)
-                    .addComponent(cancelarBTTN))
+                    .addComponent(sairBTTN))
                 .addGap(21, 21, 21))
         );
 
         pack();
     }                       
 
-    private void valTFActionPerformed(java.awt.event.ActionEvent evt) {                                      
-        
-    }                                     
 
     private void transferirBTTNActionPerformed(java.awt.event.ActionEvent evt) {                                               
         String valor = valTF.getText();
         double valorDeposito = Double.parseDouble(valor);
-        if(valorDeposito>cd.getSaldo()){
+        if(valorDeposito>main_saldoUm){
             JOptionPane.showMessageDialog(null, "SALDO INSUFICIENTE!!","ERRO",JOptionPane.ERROR_MESSAGE);
         }
         else{
@@ -206,23 +172,23 @@ public class TransferenciaFrame extends javax.swing.JFrame {
             int numero = Integer.parseInt(numTF.getText());
             String userTF = destTF.getText();
             if(user.equalsIgnoreCase("Antonio")){
-               if(agencia == cddois.getAgencia() && numero == cddois.getNUM() && userTF.equalsIgnoreCase(cddois.getNome())){
-                    cddois.deposito(valorDeposito);
-                    cd.setSaldoSub(valorDeposito);
+               if(agencia == cddois.getAgencia()&&numero == cddois.getNUM() && userTF.equalsIgnoreCase(cddois.getNome())){
+                    main_saldoDois+=valorDeposito;
+                    main_saldoUm-=valorDeposito;
                     JOptionPane.showMessageDialog(null, "Transferência Realizada com Sucesso!!","SUCESSO",JOptionPane.INFORMATION_MESSAGE);
-                    System.out.println(cddois.getSaldo());
-                    System.out.println(cd.getSaldo());
+                    System.out.println(main_saldoDois);
+                    System.out.println(main_saldoUm);
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "USUÁRIO NÃO ENCONTRADO","ERRO",JOptionPane.ERROR_MESSAGE);
                     }
             }else if(user.equalsIgnoreCase("Ana")){
-                if(agencia == cd.getAgencia() && numero == cd.getNUM() && userTF.equalsIgnoreCase(cd.getNome())){
-                    cd.deposito(valorDeposito);
-                    cddois.setSaldoSub(valorDeposito);
+                if(agencia == cd.getAgencia()&&numero == cd.getNUM() && userTF.equalsIgnoreCase(cd.getNome())){
+                    main_saldoDois-=valorDeposito;
+                    main_saldoUm+=valorDeposito;
                     JOptionPane.showMessageDialog(null, "Transferência Realizada com Sucesso!!","SUCESSO",JOptionPane.INFORMATION_MESSAGE);
-                    System.out.println(cddois.getSaldo());
-                    System.out.println(cd.getSaldo());
+                    System.out.println(main_saldoDois);
+                    System.out.println(main_saldoUm);
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "USUÁRIO NÃO ENCONTRADO","ERRO",JOptionPane.ERROR_MESSAGE);
@@ -236,31 +202,9 @@ public class TransferenciaFrame extends javax.swing.JFrame {
         agenciaTF.setText("");
     }                                              
 
-    private void destTFActionPerformed(java.awt.event.ActionEvent evt) {                                       
-
-    }                                      
-
-    private void destTFFocusLost(java.awt.event.FocusEvent evt) {                                 
-        
-    }                                
-
-    private void agenciaTFFocusLost(java.awt.event.FocusEvent evt) {                                    
-        
-    }                                   
-
-    private void agenciaTFActionPerformed(java.awt.event.ActionEvent evt) {                                          
-       
-    }                                         
-
-    private void numTFFocusLost(java.awt.event.FocusEvent evt) {                                
-       
-    }                               
-
-    private void numTFActionPerformed(java.awt.event.ActionEvent evt) {                                      
-        
-    }                                     
-
-    private void cancelarBTTNActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void sairBTTNActionPerformed(java.awt.event.ActionEvent evt) {  
+        AcessoOpcoes ao = new AcessoOpcoes(user, main_saldoUm);
+        ao.setVisible(true);
         dispose();
     }                                            
 
@@ -288,5 +232,4 @@ public class TransferenciaFrame extends javax.swing.JFrame {
             }
         });
     }
-           
-}
+}        
