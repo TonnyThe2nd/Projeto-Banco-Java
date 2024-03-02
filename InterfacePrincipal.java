@@ -1,3 +1,9 @@
+/*CREATOR
+#GitHub - > TonnyThe2nd
+#Instagram - > @web_4ntonio
+#E-mail - > antoniomarcos3577@gmail.com
+#Linkedn - > www.linkedin.com/in/antonio-marcos-sousa-de-oliveira-25b902272*/
+
 import javax.swing.JOptionPane;
 
 public class InterfacePrincipal extends javax.swing.JFrame {
@@ -9,6 +15,8 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     ClasseComandosUserUm cd = new ClasseComandosUserUm();
     ClasseComandosUserDois cddois = new ClasseComandosUserDois();
     public String mainUser;
+    public double main_saldoUm = cd.getSaldo();
+    public double main_saldoDois  = cddois.getSaldo();
     public InterfacePrincipal() {
         initComponents();
     }                      
@@ -77,10 +85,8 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                 .addComponent(entrarBTTN)
                 .addGap(40, 40, 40))
         );
-
         pack();
     }
-
     private void entrarBTTNActionPerformed(java.awt.event.ActionEvent evt) {                                           
         userTF.getText();
         char[]senha = senhaPF.getPassword();
@@ -88,21 +94,18 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         int senhaVal = Integer.parseInt(convert);
         if(senhaVal == cd.getSenha() && userTF.getText().equals(cd.getNome())){
             mainUser = "Antonio";
-            AcessoOpcoes acesso = new AcessoOpcoes(mainUser);
+            AcessoOpcoes acesso = new AcessoOpcoes(mainUser,main_saldoUm);
             acesso.setVisible(true);
         }else if(senhaVal == cddois.getSenha() && userTF.getText().equalsIgnoreCase(cddois.getNome())){
             mainUser = "Ana";
-            AcessoOpcoes acesso = new AcessoOpcoes(mainUser);
+            AcessoOpcoes acesso = new AcessoOpcoes(mainUser,main_saldoDois);
             acesso.setVisible(true);      
         }
         else{
             JOptionPane.showMessageDialog(null, "USUÁRIO E/OU SENHA INVÁLIDOS!!\nTENTE NOVAMENTE.","ERRO",JOptionPane.ERROR_MESSAGE);
         }
         userTF.setText("");
-        senhaPF.setText("");
-        
-        
-        
+        senhaPF.setText("");     
     }                                          
 
     public static void main(String args[]) {

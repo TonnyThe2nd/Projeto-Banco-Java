@@ -1,11 +1,19 @@
+/*CREATOR
+#GitHub - > TonnyThe2nd
+#Instagram - > @web_4ntonio
+#E-mail - > antoniomarcos3577@gmail.com
+#Linkedn - > www.linkedin.com/in/antonio-marcos-sousa-de-oliveira-25b902272*/
 public class AcessoOpcoes extends javax.swing.JFrame {
     ClasseComandosUserUm cd = new ClasseComandosUserUm();
     ClasseComandosUserDois cddois = new ClasseComandosUserDois();
     String user;
-    ConsultaFrame cf = new ConsultaFrame();
-    public AcessoOpcoes(String nome) {
-        initComponents();
+    double main_saldo;
+    double main_saldoDois = cddois.getSaldo();
+    public AcessoOpcoes(String nome,double valor) {
         this.user = nome;
+        this.main_saldo = valor;
+        initComponents();
+
     }
 
     private AcessoOpcoes() {
@@ -103,12 +111,13 @@ public class AcessoOpcoes extends javax.swing.JFrame {
     }                     
 
     private void saqueBTTNActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        SaqueFrame sf = new SaqueFrame(user);
+        SaqueFrame sf = new SaqueFrame(user, main_saldo);
         sf.setVisible(true);
+        dispose();
     }                                         
 
     private void transferBTTNActionPerformed(java.awt.event.ActionEvent evt) {                                             
-           TransferenciaFrame tf = new TransferenciaFrame(user);
+           TransferenciaFrame tf = new TransferenciaFrame(user, main_saldo,main_saldoDois);
            tf.setVisible(true);
            
     }                                            
@@ -117,18 +126,13 @@ public class AcessoOpcoes extends javax.swing.JFrame {
         dispose();
     }                                        
 
-    private void consultaBTTNActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        
-        if(user.equalsIgnoreCase("Antonio")){
-            cf.setSaldoLbl(cd.getSaldo());
-        }else if(user.equalsIgnoreCase("Ana")){
-            cf.setSaldoLbl(cddois.getSaldo());
-        }
+    private void consultaBTTNActionPerformed(java.awt.event.ActionEvent evt) {     
+        ConsultaFrame cf = new ConsultaFrame(user, main_saldo);                                      
         cf.setVisible(true);
     }                                            
 
     private void depositoBTTNActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        DepositoFrame df = new DepositoFrame(user);
+        DepositoFrame df = new DepositoFrame(user, main_saldo);
         df.setVisible(true);
     }                                            
     public static void main(String args[]) {

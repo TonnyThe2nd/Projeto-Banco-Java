@@ -1,3 +1,8 @@
+/*CREATOR
+#GitHub - > TonnyThe2nd
+#Instagram - > @web_4ntonio
+#E-mail - > antoniomarcos3577@gmail.com
+#Linkedn - > www.linkedin.com/in/antonio-marcos-sousa-de-oliveira-25b902272*/
 public class ClasseComandosUserDois {
     private final String USER = "ANA";
     private final int PASSWORD = 123;
