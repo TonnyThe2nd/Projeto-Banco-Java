@@ -57,19 +57,11 @@ public class TransferenciaFrame extends javax.swing.JFrame {
 
         transferirBTTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
         transferirBTTN.setText("TRANSFERIR");
-        transferirBTTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transferirBTTNActionPerformed(evt);
-            }
-        });
+        transferirBTTN.addActionListener(e -> transferirBTTNActionPerformed());
 
         sairBTTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
         sairBTTN.setText("SAIR");
-        sairBTTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sairBTTNActionPerformed(evt);
-            }
-        });
+        sairBTTN.addActionListener(e -> sairBTTNActionPerformed());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18));
         jLabel2.setText("DESTINATÁRIO(NOME):");
@@ -161,7 +153,7 @@ public class TransferenciaFrame extends javax.swing.JFrame {
     }                       
 
 
-    private void transferirBTTNActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void transferirBTTNActionPerformed() {                                               
         String valor = valTF.getText();
         double valorDeposito = Double.parseDouble(valor);
         if(valorDeposito>main_saldoUm){
@@ -202,7 +194,7 @@ public class TransferenciaFrame extends javax.swing.JFrame {
         agenciaTF.setText("");
     }                                              
 
-    private void sairBTTNActionPerformed(java.awt.event.ActionEvent evt) {  
+    private void sairBTTNActionPerformed() {  
         AcessoOpcoes ao = new AcessoOpcoes(user, main_saldoUm);
         ao.setVisible(true);
         dispose();
@@ -232,4 +224,5 @@ public class TransferenciaFrame extends javax.swing.JFrame {
             }
         });
     }
-}        
+           
+}
