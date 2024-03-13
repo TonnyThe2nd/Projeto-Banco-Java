@@ -1,9 +1,3 @@
-/*CREATOR
-#GitHub - > TonnyThe2nd
-#Instagram - > @web_4ntonio
-#E-mail - > antoniomarcos3577@gmail.com
-#Linkedn - > www.linkedin.com/in/antonio-marcos-sousa-de-oliveira-25b902272*/
-
 import javax.swing.JOptionPane;
 
 public class SaqueFrame extends javax.swing.JFrame {
@@ -15,9 +9,11 @@ public class SaqueFrame extends javax.swing.JFrame {
     ClasseComandosUserUm cd = new ClasseComandosUserUm();
     ClasseComandosUserDois cddois = new ClasseComandosUserDois();
     String user;
-    public SaqueFrame(String nome) {
+    double main_saldo;
+    public SaqueFrame(String nome, double valor) {
         initComponents();
         this.user = nome;
+        this.main_saldo = valor;
     }
     private SaqueFrame() {
         throw new UnsupportedOperationException("Not supported yet."); 
@@ -36,27 +32,13 @@ public class SaqueFrame extends javax.swing.JFrame {
 
         saqueTF.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
         saqueTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        saqueTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saqueTFActionPerformed(evt);
-            }
-        });
-
         sacarBTTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
         sacarBTTN.setText("SACAR");
-        sacarBTTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sacarBTTNActionPerformed(evt);
-            }
-        });
+        sacarBTTN.addActionListener(evt -> sacarBTTNActionPerformed());
 
         cancelarBTTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
         cancelarBTTN.setText("CANCELAR");
-        cancelarBTTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelarBTTNActionPerformed(evt);
-            }
-        });
+        cancelarBTTN.addActionListener(evt -> cancelarBTTNActionPerformed());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,40 +76,39 @@ public class SaqueFrame extends javax.swing.JFrame {
 
         pack();
     }                      
+                                     
 
-    private void saqueTFActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        
-    }                                       
-
-    private void sacarBTTNActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void sacarBTTNActionPerformed() {                                          
         String valor = saqueTF.getText();
         double valorSaque = Double.parseDouble(valor);
         if(user.equalsIgnoreCase("ANTONIO")){
-            if(valorSaque>cd.getSaldo()){
+            if(valorSaque>main_saldo){
                 saqueTF.setText("");
                 JOptionPane.showMessageDialog(null, "SALDO INSUFICIENTE!!","ERRO",JOptionPane.ERROR_MESSAGE);
             }
             else{
                 saqueTF.setText("");
-                cd.setSaldoSub(valorSaque);
-                JOptionPane.showMessageDialog(null, "SAQUE REALIZADO COM SUCESSO!\nSALDO ATUAL: R$ "+cd.getSaldo(),"SAQUE FINALIZADO",JOptionPane.INFORMATION_MESSAGE);
+                main_saldo -= valorSaque;
+                JOptionPane.showMessageDialog(null, "SAQUE REALIZADO COM SUCESSO!\nSALDO ATUAL: R$ "+main_saldo,"SAQUE FINALIZADO",JOptionPane.INFORMATION_MESSAGE);
                 
             }
         } else if(user.equalsIgnoreCase("ANA")){
-            if(valorSaque>cddois.getSaldo()){
+            if(valorSaque>main_saldo){
                 JOptionPane.showMessageDialog(null, "SALDO INSUFICIENTE!!","ERRO",JOptionPane.ERROR_MESSAGE);
                 saqueTF.setText("");
             }
             else{
                 saqueTF.setText("");
-                cddois.setSaldoSub(valorSaque);
-                JOptionPane.showMessageDialog(null, "SAQUE REALIZADO COM SUCESSO!\nSALDO ATUAL: R$ "+cddois.getSaldo(),"SAQUE FINALIZADO",JOptionPane.INFORMATION_MESSAGE);
+                main_saldo -= valorSaque;;
+                JOptionPane.showMessageDialog(null, "SAQUE REALIZADO COM SUCESSO!\nSALDO ATUAL: R$ "+main_saldo,"SAQUE FINALIZADO",JOptionPane.INFORMATION_MESSAGE);
             }
         }
         
     }                                         
 
-    private void cancelarBTTNActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void cancelarBTTNActionPerformed() {  
+        AcessoOpcoes ac = new AcessoOpcoes(user, main_saldo); 
+        ac.setVisible(true);                                          
         dispose();
     }                                            
 
