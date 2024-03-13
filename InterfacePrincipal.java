@@ -1,9 +1,3 @@
-/*CREATOR
-#GitHub - > TonnyThe2nd
-#Instagram - > @web_4ntonio
-#E-mail - > antoniomarcos3577@gmail.com
-#Linkedn - > www.linkedin.com/in/antonio-marcos-sousa-de-oliveira-25b902272*/
-
 import javax.swing.JOptionPane;
 
 public class InterfacePrincipal extends javax.swing.JFrame {
@@ -42,11 +36,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
         entrarBTTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
         entrarBTTN.setText("ENTRAR");
-        entrarBTTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                entrarBTTNActionPerformed(evt);
-            }
-        });
+        entrarBTTN.addActionListener(evt -> entrarBTTNActionPerformed());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,7 +77,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         );
         pack();
     }
-    private void entrarBTTNActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void entrarBTTNActionPerformed() {                                           
         userTF.getText();
         char[]senha = senhaPF.getPassword();
         String convert = String.valueOf(senha);
