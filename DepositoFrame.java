@@ -1,21 +1,18 @@
-/*CREATOR
-#GitHub - > TonnyThe2nd
-#Instagram - > @web_4ntonio
-#E-mail - > antoniomarcos3577@gmail.com
-#Linkedn - > www.linkedin.com/in/antonio-marcos-sousa-de-oliveira-25b902272*/
 import javax.swing.JOptionPane;
 
 public class DepositoFrame extends javax.swing.JFrame {
-    private javax.swing.JButton cancelarBTTN;
+    private javax.swing.JButton sairBTTN;
     private javax.swing.JButton depositoBTTN;
     private javax.swing.JTextField depositoTF;
     private javax.swing.JLabel jLabel1;
     ClasseComandosUserUm cd = new ClasseComandosUserUm();
     ClasseComandosUserDois cddois = new ClasseComandosUserDois();
     String user;
-    public DepositoFrame(String nome) {
+    double main_saldo;
+    public DepositoFrame(String nome,double valor) {
         initComponents();
         this.user = nome;
+        this.main_saldo = valor;
     }
     private DepositoFrame() {
         throw new UnsupportedOperationException("Not supported yet."); 
@@ -24,7 +21,7 @@ public class DepositoFrame extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         depositoTF = new javax.swing.JTextField();
-        cancelarBTTN = new javax.swing.JButton();
+        sairBTTN = new javax.swing.JButton();
         depositoBTTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -35,21 +32,12 @@ public class DepositoFrame extends javax.swing.JFrame {
         depositoTF.setFont(new java.awt.Font("Segoe UI", 1, 24));
         depositoTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        cancelarBTTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
-        cancelarBTTN.setText("CANCELAR");
-        cancelarBTTN.addActionListener(new java.awt.event.ActionListener(){
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelarBTTNActionPerformed(evt);
-            }
-        });
-
-        depositoBTTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
+        sairBTTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
+        sairBTTN.setText("CANCELAR");
+        sairBTTN.addActionListener(evt -> sairBTTNActionPerformed());
+        depositoBTTN.setFont(new java.awt.Font("Segoe UI", 1, 15)); 
         depositoBTTN.setText("DEPOSITAR");
-        depositoBTTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                depositoBTTNActionPerformed(evt);
-            }
-        });
+        depositoBTTN.addActionListener(evt -> depositoBTTNActionPerformed());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,8 +48,8 @@ public class DepositoFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addComponent(depositoBTTN, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67)
-                        .addComponent(cancelarBTTN))
+                        .addGap(67, 67, 70)
+                        .addComponent(sairBTTN))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(174, 174, 174)
                         .addComponent(depositoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -80,30 +68,32 @@ public class DepositoFrame extends javax.swing.JFrame {
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(depositoBTTN)
-                    .addComponent(cancelarBTTN))
+                    .addComponent(sairBTTN))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
     }                                         
 
-    private void depositoBTTNActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void depositoBTTNActionPerformed() {                                             
         String valor = depositoTF.getText();
         double valorDeposito = Double.parseDouble(valor);
         if(user.equalsIgnoreCase("ANTONIO")){
             depositoTF.setText("");
-            cd.deposito(valorDeposito);
-            JOptionPane.showMessageDialog(null, "DEPOSITO REALIZADO COM SUCESSO!\nSALDO ATUAL: R$ "+cd.getSaldo(),"SAQUE FINALIZADO",JOptionPane.INFORMATION_MESSAGE);
+            main_saldo+=valorDeposito;
+            JOptionPane.showMessageDialog(null, "DEPOSITO REALIZADO COM SUCESSO!\nSALDO ATUAL: R$ "+main_saldo,"SAQUE FINALIZADO",JOptionPane.INFORMATION_MESSAGE);
 
         }else if(user.equalsIgnoreCase("ANA")){
             depositoTF.setText("");
-            cddois.deposito(valorDeposito);
-            JOptionPane.showMessageDialog(null, "DEPOSITO REALIZADO COM SUCESSO!\nSALDO ATUAL: R$ "+cddois.getSaldo(),"SAQUE FINALIZADO",JOptionPane.INFORMATION_MESSAGE);
+            main_saldo+=valorDeposito;
+            JOptionPane.showMessageDialog(null, "DEPOSITO REALIZADO COM SUCESSO!\nSALDO ATUAL: R$ "+main_saldo,"SAQUE FINALIZADO",JOptionPane.INFORMATION_MESSAGE);
             
         }
 
     }
-    private void cancelarBTTNActionPerformed(java.awt.event.ActionEvent evt){
+    private void sairBTTNActionPerformed(){
+        AcessoOpcoes ao = new AcessoOpcoes(user, main_saldo);
+        ao.setVisible(true);
         dispose();
     }                                          
     public static void main(String args[]) {
