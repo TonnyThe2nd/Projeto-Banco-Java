@@ -1,20 +1,14 @@
-/*CREATOR
-#GitHub - > TonnyThe2nd
-#Instagram - > @web_4ntonio
-#E-mail - > antoniomarcos3577@gmail.com
-#Linkedn - > www.linkedin.com/in/antonio-marcos-sousa-de-oliveira-25b902272*/
 public class ConsultaFrame extends javax.swing.JFrame {
-    
-  
-    public ConsultaFrame() {
+    static String main_user; 
+    static double main_saldo;
+    public ConsultaFrame(String user, double valor) {
+        main_saldo = valor;
+        main_user = user;
         initComponents();
         
     }
 
-    public void setSaldoLbl(double saldo){
-        saldoLBL.setText("R$ "+ saldo);
-    }
-                         
+           
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
@@ -26,7 +20,7 @@ public class ConsultaFrame extends javax.swing.JFrame {
         jLabel1.setText("SALDO ATUAL");
 
         saldoLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); 
-        saldoLBL.setText("jLabel2");
+        saldoLBL.setText("R$ "+ main_saldo);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -74,7 +68,8 @@ public class ConsultaFrame extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConsultaFrame().setVisible(true);
+                ConsultaFrame cf = new ConsultaFrame(main_user, main_saldo);
+                cf.setVisible(true);
             }
         });
     }
