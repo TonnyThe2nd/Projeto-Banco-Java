@@ -1,8 +1,3 @@
-/*CREATOR
-#GitHub - > TonnyThe2nd
-#Instagram - > @web_4ntonio
-#E-mail - > antoniomarcos3577@gmail.com
-#Linkedn - > www.linkedin.com/in/antonio-marcos-sousa-de-oliveira-25b902272*/
 public class AcessoOpcoes extends javax.swing.JFrame {
     ClasseComandosUserUm cd = new ClasseComandosUserUm();
     ClasseComandosUserDois cddois = new ClasseComandosUserDois();
@@ -31,43 +26,21 @@ public class AcessoOpcoes extends javax.swing.JFrame {
 
         saqueBTTN.setFont(new java.awt.Font("Segoe UI", 1, 18));
         saqueBTTN.setText("SACAR");
-        saqueBTTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saqueBTTNActionPerformed(evt);
-            }
-        });
+        saqueBTTN.addActionListener(e -> saqueBTTNActionPerformed());
 
         transferBTTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
         transferBTTN.setText("TRANSFERIR");
-        transferBTTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transferBTTNActionPerformed(evt);
-            }
-        });
+        transferBTTN.addActionListener(e ->transferBTTNActionPerformed());
 
         depositoBTTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
         depositoBTTN.setText("DEPOSITAR");
-        depositoBTTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                depositoBTTNActionPerformed(evt);
-            }
-        });
-
+        depositoBTTN.addActionListener(e -> depositoBTTNActionPerformed());
         consultaBTTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
         consultaBTTN.setText("CONSULTAR");
-        consultaBTTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultaBTTNActionPerformed(evt);
-            }
-        });
-
+        consultaBTTN.addActionListener(e-> consultaBTTNActionPerformed());
         sairBTTN.setFont(new java.awt.Font("Segoe UI", 1, 14)); 
         sairBTTN.setText("SAIR");
-        sairBTTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sairBTTNActionPerformed(evt);
-            }
-        });
+        sairBTTN.addActionListener(e -> sairBTTNActionPerformed());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,28 +83,28 @@ public class AcessoOpcoes extends javax.swing.JFrame {
         pack();
     }                     
 
-    private void saqueBTTNActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void saqueBTTNActionPerformed() {                                          
         SaqueFrame sf = new SaqueFrame(user, main_saldo);
         sf.setVisible(true);
         dispose();
     }                                         
 
-    private void transferBTTNActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void transferBTTNActionPerformed() {                                             
            TransferenciaFrame tf = new TransferenciaFrame(user, main_saldo,main_saldoDois);
            tf.setVisible(true);
            
     }                                            
 
-    private void sairBTTNActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void sairBTTNActionPerformed() {                                         
         dispose();
     }                                        
 
-    private void consultaBTTNActionPerformed(java.awt.event.ActionEvent evt) {     
+    private void consultaBTTNActionPerformed() {     
         ConsultaFrame cf = new ConsultaFrame(user, main_saldo);                                      
         cf.setVisible(true);
     }                                            
 
-    private void depositoBTTNActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void depositoBTTNActionPerformed() {                                             
         DepositoFrame df = new DepositoFrame(user, main_saldo);
         df.setVisible(true);
     }                                            
