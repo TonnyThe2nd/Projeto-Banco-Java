@@ -4,6 +4,12 @@
 #E-mail - > antoniomarcos3577@gmail.com
 #Linkedn - > www.linkedin.com/in/antonio-marcos-sousa-de-oliveira-25b902272*/
 
+/*CREATOR
+#GitHub - > TonnyThe2nd
+#Instagram - > @web_4ntonio
+#E-mail - > antoniomarcos3577@gmail.com
+#Linkedn - > www.linkedin.com/in/antonio-marcos-sousa-de-oliveira-25b902272*/
+
 import javax.swing.JOptionPane;
 
 public class TransferenciaFrame extends javax.swing.JFrame {
@@ -17,8 +23,8 @@ public class TransferenciaFrame extends javax.swing.JFrame {
     private javax.swing.JTextField numTF;
     private javax.swing.JButton transferirBTTN;
     private javax.swing.JTextField valTF;
-    ClasseComandosUserUm cd = new ClasseComandosUserUm();
-    ClasseComandosUserDois cddois = new ClasseComandosUserDois();
+    ClasseComandosUserUm cd = new ClasseComandosUserUm("Antonio",123,0,1234,12345678);
+    ClasseComandosUserUm cddois = new ClasseComandosUserUm("Ana",123,1000,1234,12345678);
     
     String user;
     double main_saldoUm;
@@ -168,8 +174,6 @@ public class TransferenciaFrame extends javax.swing.JFrame {
                     main_saldoDois+=valorDeposito;
                     main_saldoUm-=valorDeposito;
                     JOptionPane.showMessageDialog(null, "Transferência Realizada com Sucesso!!","SUCESSO",JOptionPane.INFORMATION_MESSAGE);
-                    System.out.println(main_saldoDois);
-                    System.out.println(main_saldoUm);
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "USUÁRIO NÃO ENCONTRADO","ERRO",JOptionPane.ERROR_MESSAGE);
@@ -179,12 +183,9 @@ public class TransferenciaFrame extends javax.swing.JFrame {
                     main_saldoDois-=valorDeposito;
                     main_saldoUm+=valorDeposito;
                     JOptionPane.showMessageDialog(null, "Transferência Realizada com Sucesso!!","SUCESSO",JOptionPane.INFORMATION_MESSAGE);
-                    System.out.println(main_saldoDois);
-                    System.out.println(main_saldoUm);
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "USUÁRIO NÃO ENCONTRADO","ERRO",JOptionPane.ERROR_MESSAGE);
-                  
                     }
             } 
         }
@@ -226,3 +227,4 @@ public class TransferenciaFrame extends javax.swing.JFrame {
     }
            
 }
+
