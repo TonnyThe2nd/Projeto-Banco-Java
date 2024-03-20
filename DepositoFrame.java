@@ -5,8 +5,8 @@ public class DepositoFrame extends javax.swing.JFrame {
     private javax.swing.JButton depositoBTTN;
     private javax.swing.JTextField depositoTF;
     private javax.swing.JLabel jLabel1;
-    ClasseComandosUserUm cd = new ClasseComandosUserUm();
-    ClasseComandosUserDois cddois = new ClasseComandosUserDois();
+    ClasseComandosUserUm cd = new ClasseComandosUserUm("Antonio",123,0,1234,12345678);
+    ClasseComandosUserUm cddois = new ClasseComandosUserUm("Ana",123,1000,1234,12345678);
     String user;
     double main_saldo;
     public DepositoFrame(String nome,double valor) {
