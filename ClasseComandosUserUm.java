@@ -4,11 +4,19 @@
 #E-mail - > antoniomarcos3577@gmail.com
 #Linkedn - > www.linkedin.com/in/antonio-marcos-sousa-de-oliveira-25b902272*/
 public class ClasseComandosUserUm {
-    private final String USER = "Antonio";
-    private final int PASSWORD = 123;
-    private double saldo = 1000;
-    private final int AGENCIA = 1234;
-    private final int NUMERO_CONTA = 12345678;
+    private String USER;
+    private int PASSWORD;
+    private double saldo;
+    private int AGENCIA;
+    private int NUMERO_CONTA;
+
+    public ClasseComandosUserUm(String USER, int PASSWORD, double saldo, int AGENCIA, int NUMERO_CONTA){
+        this.USER = USER;
+        this.PASSWORD = PASSWORD;
+        this.saldo = saldo;
+        this.AGENCIA =AGENCIA;
+        this.NUMERO_CONTA = NUMERO_CONTA;
+    }
     public int getSenha(){
         return PASSWORD;
     }
@@ -33,3 +41,4 @@ public class ClasseComandosUserUm {
         return NUMERO_CONTA;
     }
 }
+
