@@ -6,8 +6,8 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField senhaPF;
     private javax.swing.JTextField userTF;
-    ClasseComandosUserUm cd = new ClasseComandosUserUm();
-    ClasseComandosUserDois cddois = new ClasseComandosUserDois();
+    ClasseComandosUserUm cd = new ClasseComandosUserUm("Antonio",123,0,1234,12345678);
+    ClasseComandosUserUm cddois = new ClasseComandosUserUm("Ana",123,1000,1234,12345678);
     public String mainUser;
     public double main_saldoUm = cd.getSaldo();
     public double main_saldoDois  = cddois.getSaldo();
@@ -87,11 +87,13 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             AcessoOpcoes acesso = new AcessoOpcoes(mainUser,main_saldoUm);
             acesso.setVisible(true);
         }else if(senhaVal == cddois.getSenha() && userTF.getText().equalsIgnoreCase(cddois.getNome())){
+            System.out.println(cddois.getNome());
             mainUser = "Ana";
             AcessoOpcoes acesso = new AcessoOpcoes(mainUser,main_saldoDois);
             acesso.setVisible(true);      
         }
         else{
+            System.out.println(cddois.getNome());
             JOptionPane.showMessageDialog(null, "USUÁRIO E/OU SENHA INVÁLIDOS!!\nTENTE NOVAMENTE.","ERRO",JOptionPane.ERROR_MESSAGE);
         }
         userTF.setText("");
